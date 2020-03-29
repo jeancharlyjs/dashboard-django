@@ -11,8 +11,11 @@ class index(View):
         return render(request, "index.html", context)
 
 def dashboard(request):
+    from random import sample
     cientificos = ['Nikola Tesla', 'Issac Newton', 'Nicolas Copernico', 'Maria Curie', 'Arquimedes', 'Erwin Schrödinger']
-    puntos = [50, 19, 3, 5, 2, 3]
+    lista = list(range(80))
+    puntos = sample(lista, 6)
+    # puntos = [50, 19, 3, 5, 2, 3]
     datos = {
             "labels": puntos,
             "cientificos": cientificos
