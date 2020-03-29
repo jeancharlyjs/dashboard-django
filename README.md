@@ -7,6 +7,7 @@ Antes que nada, debemos saber que es un dashboard, un Dashboard no es mas que un
 - Lineal
 - Polar
 Ares y demás.
+
 La idea de todo esto es poder entender utilidad y como podemos desarrollarlo, en el aspecto de la utilizada, los gráficos hablan mas que los datos suministrados, para que estos datos e información puedan ser procesada y en virtud de la misma graficadas, requerimos de uno o varios modelos en función de lo que queremos graficar.
 
 Ahora bien utilizaremos unos de los Framework que para mi uso personal es muy sostenible y fácil de usar a la hora de crear Modelo, Vista y Graficar, este paradigma nos ayuda a realizar en tampoco tiempo un trabajo. Y veremos como hacerlo utilizando Django y la librerías de Javascript.
