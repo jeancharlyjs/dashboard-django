@@ -321,27 +321,50 @@ Y para el HTML seria lo siguiente:
 
 **index.html**
 ```html
-{%load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Nikola Tesla</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   </head>
   <body>
-    <h1>{{ Tesla }}</h1>
-    <img alt="Nikola Tesla, el hombre que cambió el mundo" class="n3VNCb" src="https://img-cdn.hipertextual.com/files/2014/06/Nikola-Tesla.jpg?strip=all&amp;lossy=1&amp;quality=70&amp;resize=740%2C490&amp;ssl=1" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd;" style="width: 527px; height: 348.959px; margin: 0px;">
-    <h3><em>El presente es de ellos, pero el futuro, por el cual trabajé tanto, es mío.</em></h3>
-    <div class="row">
-      <div id="chartjs-contener" style="width: 600px">
-        <canvas id="myChart" width="400" height="400"></canvas>
-      </div>      
+    <div class="container py-5">
+      <h1>{{ Tesla }}</h1>
+      <hr>
     </div>
+    <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-4">
+        <img alt="Nikola Tesla, el hombre que cambió el mundo" class="n3VNCb" src="https://img-cdn.hipertextual.com/files/2014/06/Nikola-Tesla.jpg?strip=all&amp;lossy=1&amp;quality=70&amp;resize=740%2C490&amp;ssl=1" data-noaft="1" jsname="HiaYvf" jsaction="load:XAeZkd;" style="width: 527px; height: 348.959px; margin: 0px;">
+        <h3 class="text-center"><em>"El presente es de ellos, pero el futuro, por el cual trabajé tanto, es mío".</em></h3>
+      </div>
+      <div class="col-1">
+      </div>
+      <div id="chartjs-contener" class="col-5" style="width: 100%; height: 80% backgroundColor: black">
+        <h3 class="text-right">Dashboard Example...</h3>
+        <canvas id="myChart"></canvas>
+        <button id="actualizar" type="button" class="btn btn-secondary btn-lg btn-block " style="background-color:#8b8bc0" onclick="actualizar()">Actualizar Datos</button>
+      </div>
+    </div>
+    <div class="container">
+      <hr>
+    </div>
+    <script>
+    function actualizar(){
+      document.getElementById("chartjs-contener").innerHTML = location.reload();
+    }
+    </script>
     <script type="text/javascript" src="{% static 'js/jquery.js'%}"></script>
     <script type="text/javascript" src="{% static 'js/chart.js' %}"></script>
   </body>
 </html>
+
 ```
 Este seria un esquema básico para construir el **DASHBOARD** pero no es lo suficiente, debido que queremos tomar los valores desde nuestra _views.py_ , lo que haremo es crear una función que nos almacenará los valores tipo **JSON**, estos valores a su vez deberán ser enviando a una URL, esta URL a la misma vez deberá ser leída por **AJAX**, con la finalidad de poder presentar los datos de la **Views.py** en nuestro _index.html_ .
 
