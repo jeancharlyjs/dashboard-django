@@ -149,13 +149,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 Lugo podemos ir a nuestro Browers y escribir en la barra de _url_  **localhost:8000**
-![Browers localhost](https://github.com/jeancharlyjs/dashboard-django/blob/master/imag/RunServer.png)
+![Browers localhost](https://github.com/jeancharlyjs/dashboard-django/blob/master/static/imag/RunServer.png)
 
 <br>
 </br>
 
 En esta misma linea, si queremos acceder al admin, solo tenemos que agragar **localhost:8000/admin**
-![Admin](https://github.com/jeancharlyjs/dashboard-django/blob/master/imag/BrowersAdmin.png)
+![Admin](https://github.com/jeancharlyjs/dashboard-django/blob/master/static/imag/BrowersAdmin.png)
 
 <br>
 </br>
@@ -249,7 +249,7 @@ urlpatterns = [
 ```
 Y para terminar de "CONFIGURAR" por código, debemos crear nuestro **index.html** y listo. Ahí tendremos nuestra WEB.
 
-![Nikola Tesla](https://github.com/jeancharlyjs/dashboard-django/blob/master/imag/Nikola%20Tesla.png)
+![Nikola Tesla](https://github.com/jeancharlyjs/dashboard-django/blob/master/static/imag/Nikola%20Tesla.png)
 
 ## TECERA PARTE
 
@@ -408,4 +408,4 @@ urlpatterns = [
 ```
 Y esta es la manera en la que se muestra.
 
-![Dashboard](https://github.com/jeancharlyjs/dashboard-django/blob/master/imag/DashboardTesla.png)
+![Dashboard](https://github.com/jeancharlyjs/dashboard-django/blob/master/static/imag/DashboardTesla.png)
