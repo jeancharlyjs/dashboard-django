@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'dashdjangoapp', #Este app fue quien creamos mas arriba con python manage.py startapp
 ]
 ```
@@ -227,11 +228,12 @@ Para cada función si y solo si es necesario le corresponde una *URL*, estas url
 **urls.py**
 
 ```python
-from django.conf.urls import url
-from .views import index
+ffrom django.conf.urls import url
+from .views import index, VisualizadorJSON
 
 urlpatterns = [
         url(r'^$', index.as_view(), name="index"),
+        url(r'^datos/$', VisualizadorJSON.as_view(), name="dash"),
 ]
 
 ```
@@ -375,24 +377,37 @@ Y para nuestro archivo _views.py_ todo queda expuesto en donde creamos nuestra f
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.generic import View
+
+# Rest Framework
+from rest_framework.response import Response
+from rest_framework.views import APIView
 # Create your views here.
 
 class index(View):
     def get(self, request, *args, **kwargs):
         context = {
             "Tesla" : "Nikola Tesla - Genio por Excelencia"
-        }   
+        }
         return render(request, "index.html", context)
 
-def dashboard(request):
-    cientificos = ['Nikola Tesla', 'Issac Newton', 'Nicolas Copernico', 'Maria Curie', 'Arquimedes', 'Erwin Schrödinger']
-    puntos = [50, 19, 3, 5, 2, 3]
-    datos = {
-            "labels": puntos,
-            "cientificos": cientificos
-    }
-    return JsonResponse(datos)
+
+class VisualizadorJSON(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        from random import sample
+        cientificos = ['Nikola Tesla', 'Isaac Newton', 'Nicolas Copernico', 'Maria Curie', 'Arquimedes', 'Erwin Schrödinger']
+        lista = list(range(80))
+        puntos = sample(lista, 6)
+        # puntos = [50, 19, 3, 5, 2, 3]
+        datos = {
+                "labels": puntos,
+                "cientificos": cientificos
+        }
+        return Response(datos)
 ```
+Es importante saber y tener conocimiento de las APIs en este caso [Rest_Framework](https://www.django-rest-framework.org/) en donde nos permite serializadores o visualizar los datos de nuestro modelos, permitiendo obtener el diccionario tipo JSON capturandolo con un _Response_ [Breve Documentación Rest-Django](https://www.paradigmadigital.com/dev/introduccion-django-rest-framework/).
 En donde **JsonResponse** adquiere los valores y este son pasado a la url tipo JSON y no obstante podemos ingresar mediante la url **localhost:8000/datos** y nos devolverá los valores tipo JSON en nuestro navegador.
 
 **urls.py**
@@ -409,3 +424,5 @@ urlpatterns = [
 Y esta es la manera en la que se muestra.
 
 ![Dashboard](https://github.com/jeancharlyjs/dashboard-django/blob/master/dashdjango/static/imag/DashboardTesla.png)
+
+Como ya hemos definido en nuestra URL para manejo de los datos en la aplicacion nuestra, podemos visualizar con propiedad esta información de la accediendo a la url **localhost:8000/datos/** que como se menciono, nos devolverá un JSON haciendo referencia a nuestra **view.py** de la siguiente forma.
