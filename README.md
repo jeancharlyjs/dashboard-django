@@ -426,3 +426,5 @@ Y esta es la manera en la que se muestra.
 ![Dashboard](https://github.com/jeancharlyjs/dashboard-django/blob/master/dashdjango/static/imag/DashboardTesla.png)
 
 Como ya hemos definido en nuestra URL para manejo de los datos en la aplicacion nuestra, podemos visualizar con propiedad esta información de la accediendo a la url **localhost:8000/datos/** que como se menciono, nos devolverá un JSON haciendo referencia a nuestra **view.py** de la siguiente forma.
+
+![Rest-API](https://github.com/jeancharlyjs/dashboard-django/blob/master/dashdjango/static/imag/DatosApiRest.png)
