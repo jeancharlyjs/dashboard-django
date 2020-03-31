@@ -228,7 +228,7 @@ Para cada función si y solo si es necesario le corresponde una *URL*, estas url
 **urls.py**
 
 ```python
-ffrom django.conf.urls import url
+from django.conf.urls import url
 from .views import index, VisualizadorJSON
 
 urlpatterns = [
@@ -414,11 +414,11 @@ En donde **JsonResponse** adquiere los valores y este son pasado a la url tipo J
 
 ```python
 from django.conf.urls import url
-from .views import index, dashboard
+from .views import index, VisualizadorJSON
 
 urlpatterns = [
         url(r'^$', index.as_view(), name="index"),
-        url(r'^datos/$', dashboard, name="dash"),
+        url(r'^datos/$', VisualizadorJSON.as_view(), name="dash"),
 ]
 ```
 Y esta es la manera en la que se muestra.
